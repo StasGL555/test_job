@@ -1,0 +1,20 @@
+#!groovy
+//check mail.home45.ru
+properties ([disableConcurentBuilds()])
+
+pipeline {
+ agent {
+  label 'master'
+ }     
+ options {
+  buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+  timestamps()
+ }
+ stages {
+  stage("First step") {
+   steps {
+    sh 'ssh root@mail.home45.ru \'hostname\''
+   }
+  } 
+ }
+} 
