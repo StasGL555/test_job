@@ -14,7 +14,8 @@ pipeline {
    steps {
     sh 'ssh root@mail.home45.ru \'hostname\''
     sh 'ssh root@mail.home45.ru \'hostname\''
-    echo '`uptime`'
+    sh 'uptime'
+    sh 'ssh root@mail.home45.ru \'uptime\''
    }
   } 
  }
