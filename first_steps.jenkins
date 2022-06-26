@@ -20,7 +20,7 @@ pipeline {
   } 
    stage("Second step") {
     steps {
-     sh 'ssh root@mail.home45.ru \'hostname\''
+     sh 'ssh root@mail.home45.ru \'df -h\''
     } 
    } 
  }
