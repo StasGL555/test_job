@@ -13,7 +13,7 @@ pipeline {
   stage("First step") {
    steps {
     sh 'ssh root@mail.home45.ru \'hostname\''
-    sh uptime
+    sh 'ssh uptime'
    }
   } 
  }
