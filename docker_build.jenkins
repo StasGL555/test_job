@@ -1,0 +1,30 @@
+#!groovy
+//check mail.home45.ru
+properties ([disableConcurrentBuilds()])
+
+pipeline {
+ agent any 
+       
+ options {
+  buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+  timestamps()
+ }
+ stages {
+  stage("create docker image") {
+   steps {
+    echo "=================start building image===================="
+     dir ('docker/toolbox') {
+      sh 'docker build .'
+     }
+    sh 'ssh root@mail.home45.ru \'hostname\''
+    sh 'uptime'
+    sh 'ssh root@mail.home45.ru \'uptime\''
+   }
+  } 
+   stage("Second step") {
+    steps {
+     sh 'ssh root@mail.home45.ru \'df -h\''
+    } 
+   } 
+ }
+} 
