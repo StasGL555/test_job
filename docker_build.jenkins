@@ -16,15 +16,7 @@ pipeline {
      dir ('docker/toolbox') {
       sh 'docker build .'
      }
-    sh 'ssh root@mail.home45.ru \'hostname\''
-    sh 'uptime'
-    sh 'ssh root@mail.home45.ru \'uptime\''
-   }
+    }
   } 
-   stage("Second step") {
-    steps {
-     sh 'ssh root@mail.home45.ru \'df -h\''
-    } 
-   } 
  }
 } 
